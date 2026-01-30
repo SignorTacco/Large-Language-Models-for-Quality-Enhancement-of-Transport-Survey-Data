@@ -4,7 +4,7 @@ This repository contains the research and implementation code for a thesis explo
 
 The project investigates how traditional string-matching and modern Generative AI (RAG) compare when resolving the "Semantic Gap" between human narrative and machine-readable coordinates.
 
-## 🔬 Experimental Framework: Two Approaches
+## Experimental Framework: Two Approaches
 Instead of a single pipeline, this study developed and compared two independent methods to address data loss:
 
 ### Method A: The Deterministic Approach (DET)
@@ -19,12 +19,12 @@ Instead of a single pipeline, this study developed and compared two independent 
 
 
 
-## 📈 Analysis & Psychophysics
+## Analysis & Psychophysics
 The repository includes the analysis of the "Unified Bias Matrix," which uses the combined valid results of both experiments to quantify human reporting error:
 * **Distance Perception:** Short trips (<2km) are overestimated by 64.3% (**Short Trip Inflation**).
 * **Time Perception:** Long trips (>60m) are underestimated by 89.1% (**Optimism Bias**).
 
-## 🛡️ Privacy & Local Execution
+## Privacy & Local Execution
 Both experiments were designed to meet the strict **GDPR requirements** of the Danish National Transport Model.
 * No data leaves the local environment.
 * All LLM inference is performed on-premise using quantized open-source weights.
@@ -34,7 +34,7 @@ Both experiments were designed to meet the strict **GDPR requirements** of the D
 
 
 
-## 🛠️ Implementation Workflow & File Structure
+## Implementation Workflow & File Structure
 The project follows a "Golden Cascade" logic: preprocessing the raw survey data, executing a high-volume Deterministic experiment locally, and running a high-reasoning Semantic (RAG) experiment on the DTU HPC Cluster.
 
 ### 1. Infrastructure & Reference Data
@@ -90,5 +90,5 @@ Taxonomy of Failure morphology.
 Performance Visualizations (Venn diagrams and confidence distributions).
 
 ---
-## ⚠️ Note on Data Privacy
+## Note on Data Privacy
 The datasets used in this project (`TU Raw Data` and `Efterkod`) are the property of the Danish National Travel Survey and contain sensitive mobility information. Consequently, the `Data/` and `Addresses/` CSV files are excluded from this repository to comply with GDPR and DTU data privacy policies. Users wishing to replicate the study must provide their own authorized access to these data sources.

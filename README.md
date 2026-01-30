@@ -30,11 +30,60 @@ Both experiments were designed to meet the strict **GDPR requirements** of the D
 * All LLM inference is performed on-premise using quantized open-source weights.
 * Vector search is handled in-memory via FAISS.
 
-## 📂 Project Structure
-* `/experiments/deterministic`: Scripts for Levenshtein matching and DAWA registry queries.
-* `/experiments/semantic`: RAG implementation, FAISS index construction, and local LLM prompting.
-* `/data_baseline`: Documentation on the "Efterkod" (Post-code) stratum used as the experimental ground truth.
-* `/results`: Notebooks generating the error matrices and taxonomy of failure.
+
+
+
+
+## 🛠️ Implementation Workflow & File Structure
+The project is divided into four main phases: Infrastructure Setup, Preprocessing, HPC Cluster Operations (Semantic), and Final Routing & Analysis.
+
+1. Infrastructure & Reference Data
+Before running the pipelines, the environment and the Danish address baseline must be established.
+
+Addresses/fetch_all_denmark_csv.py: Downloads the official Danish address registry.
+
+Addresses/build_index.py: Processes raw addresses into searchable artifacts (stored in addr_index/).
+
+Setting_up_docker_osm.txt: Instructions for hosting the local OSRM (Open Source Routing Machine) instance via Docker.
+
+2. Preprocessing: The "Efterkod" Alignment
+This phase aligns the raw survey data with the official ground truth (Efterkod) to identify the errors that need fixing.
+
+Individual Playbooks: Process raw session, trip, and stage data into TuSession_Edited_Nicola.csv, EfterkodTur_Edited_Nicola.csv, and EfterkodDelure_Edited_Nicola.csv.
+
+Merge_Efterkod_DFs.ipynb: Merges these into the master dataset: Data/FastCheckTUData.csv.
+
+prep_fine_tuning.ipynb: Converts the master data into LLM-ready formats: full_200k_dataset_with_prompts.csv and train_challenger.jsonl.
+
+3. The Experimental Pipelines
+Approach A: Deterministic (Local)
+DET_OSRM.ipynb: Runs the Levenshtein string-matching logic and local OSRM routing.
+
+Output: DET_final_corrected_df.csv
+
+Approach B: Semantic / RAG (DTU HPC Cluster)
+This phase requires high-compute resources and follows a specific sequence:
+
+Training: train.py uses train_challenger.jsonl to create the fine-tuned lora_challenger_model.
+
+Indexing: build_rag_index.py creates the FAISS vector store (address.index) from Danish addresses.
+
+Augmentation: augment_with_rag.py combines the user prompts with retrieved context to create full_200k_dataset_RAG_READY.csv.
+
+Inference: inference.py runs the fine-tuned model to produce RAG_final_thesis_results.csv.
+
+4. Final Validation & Psychophysical Analysis
+Once the cluster outputs are retrieved, we perform final routing and compare the two methods against the baseline.
+
+RAG_OSRM.ipynb: Performs OSRM distance/time recalculations on the RAG results to produce Data/RAG_corrected_df.csv.
+
+confidence_analysis_vs_baseline.ipynb: The final analysis hub. Compares DET and RAG outputs against the original data to generate:
+
+The Unified Bias Matrix (Distance/Time error).
+
+Venn Diagrams of orthogonality.
+
+Taxonomy of Failure charts.
 
 ---
 *This research serves as a proof-of-concept for the "Golden Cascade" architecture—proposing that future survey systems should use deterministic filters for volume and semantic models for the complex residual tail.*

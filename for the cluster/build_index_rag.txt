@@ -1,0 +1,162 @@
+==========================================================
+Starting Index Build Job
+Node: n-62-13-14
+==========================================================
+Collecting numpy<2
+  Downloading numpy-1.26.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.2/18.2 MB 26.5 MB/s eta 0:00:00
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.2.6
+    Uninstalling numpy-2.2.6:
+      Successfully uninstalled numpy-2.2.6
+Successfully installed numpy-1.26.4
+Requirement already satisfied: faiss-gpu in ./venv/lib/python3.10/site-packages (1.7.2)
+Requirement already satisfied: sentence-transformers in ./venv/lib/python3.10/site-packages (5.1.2)
+Requirement already satisfied: torch>=1.11.0 in ./venv/lib/python3.10/site-packages (from sentence-transformers) (2.9.0)
+Requirement already satisfied: typing_extensions>=4.5.0 in ./venv/lib/python3.10/site-packages (from sentence-transformers) (4.15.0)
+Requirement already satisfied: transformers<5.0.0,>=4.41.0 in ./venv/lib/python3.10/site-packages (from sentence-transformers) (4.57.3)
+Requirement already satisfied: scipy in ./venv/lib/python3.10/site-packages (from sentence-transformers) (1.15.3)
+Requirement already satisfied: scikit-learn in ./venv/lib/python3.10/site-packages (from sentence-transformers) (1.7.2)
+Requirement already satisfied: huggingface-hub>=0.20.0 in ./venv/lib/python3.10/site-packages (from sentence-transformers) (0.36.0)
+Requirement already satisfied: Pillow in ./venv/lib/python3.10/site-packages (from sentence-transformers) (12.0.0)
+Requirement already satisfied: tqdm in ./venv/lib/python3.10/site-packages (from sentence-transformers) (4.67.1)
+Requirement already satisfied: requests in ./venv/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (2.32.5)
+Requirement already satisfied: pyyaml>=5.1 in ./venv/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (6.0.3)
+Requirement already satisfied: packaging>=20.9 in ./venv/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (25.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in ./venv/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (1.2.0)
+Requirement already satisfied: fsspec>=2023.5.0 in ./venv/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (2025.9.0)
+Requirement already satisfied: filelock in /appl9/python/3.10.13/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (3.13.1)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (11.7.3.90)
+Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (10.3.9.90)
+Requirement already satisfied: jinja2 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.1.6)
+Requirement already satisfied: triton==3.5.0 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.5.0)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (11.3.3.83)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (0.7.1)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.8.90)
+Requirement already satisfied: nvidia-nccl-cu12==2.27.5 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (2.27.5)
+Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.13.1.3)
+Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.8.4.1)
+Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.8.90)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.8.93)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.5.8.93)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.8.90)
+Requirement already satisfied: networkx>=2.5.1 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.4.2)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.8.93)
+Requirement already satisfied: nvidia-nvshmem-cu12==3.3.20 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.3.20)
+Requirement already satisfied: sympy>=1.13.3 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.14.0)
+Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in ./venv/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (9.10.2.21)
+Requirement already satisfied: tokenizers<=0.23.0,>=0.22.0 in ./venv/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.22.1)
+Requirement already satisfied: numpy>=1.17 in ./venv/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (1.26.4)
+Requirement already satisfied: safetensors>=0.4.3 in ./venv/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.7.0)
+Requirement already satisfied: regex!=2019.12.17 in ./venv/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2025.11.3)
+Requirement already satisfied: threadpoolctl>=3.1.0 in ./venv/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (3.6.0)
+Requirement already satisfied: joblib>=1.2.0 in ./venv/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (1.5.2)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./venv/lib/python3.10/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence-transformers) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./venv/lib/python3.10/site-packages (from jinja2->torch>=1.11.0->sentence-transformers) (3.0.3)
+Requirement already satisfied: idna<4,>=2.5 in ./venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.20.0->sentence-transformers) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.20.0->sentence-transformers) (2.6.1)
+Requirement already satisfied: charset_normalizer<4,>=2 in ./venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.20.0->sentence-transformers) (3.4.4)
+Requirement already satisfied: certifi>=2017.4.17 in ./venv/lib/python3.10/site-packages (from requests->huggingface-hub>=0.20.0->sentence-transformers) (2025.11.12)
+1. Loading Embedding Model...
+2. Loading Address Data...
+   Original Rows: 3937307
+   Cleaned Rows:  3937307
+3. Encoding Addresses (GPU Accelerated)...
+4. Building FAISS Index...
+   Index contains 3937307 vectors.
+5. Saving Index to Disk...
+6. Saving Metadata...
+Done! RAG Index is ready in 'data/' folder.
+==========================================================
+Job Complete
+==========================================================
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27415720: <build_rag_index> in cluster <dcc> Done
+
+Job <build_rag_index> was submitted from host <n-62-30-8> by user <s232692> in cluster <dcc> at Mon Dec 15 11:01:22 2025
+Job was executed on host(s) <4*n-62-13-14>, in queue <gpul40s>, as user <s232692> in cluster <dcc> at Mon Dec 15 11:01:24 2025
+</zhome/ee/5/202790> was used as the home directory.
+</zhome/ee/5/202790/Thesis> was used as the working directory.
+Started at Mon Dec 15 11:01:24 2025
+Terminated at Mon Dec 15 11:25:15 2025
+Results reported at Mon Dec 15 11:25:15 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+### Queue Name
+#BSUB -q gpul40s
+
+### Job Name
+#BSUB -J build_rag_index
+
+### Logs
+#BSUB -o logs/index_out_%J.txt
+#BSUB -e logs/index_err_%J.txt
+
+### Walltime 
+#BSUB -W 03:00
+
+### Resources
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=48GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+
+echo "=========================================================="
+echo "Starting Index Build Job"
+echo "Node: $(hostname)"
+echo "=========================================================="
+
+# 1. Load Modules (Same as before)
+module purge
+module load python3/3.10.13
+module load cuda/12.1.1
+module load cudnn/v8.9.7.29-prod-cuda-12.X
+
+# 2. Activate Environment
+source venv/bin/activate
+
+# 3. FIX: FORCE NUMPY DOWNGRADE
+# This is the critical line to fix your error
+pip install "numpy<2"
+
+# 4. Install other dependencies (if missing)
+pip install faiss-gpu sentence-transformers
+
+# 5. Run Script
+python3 -u scripts/build_rag_index.py
+
+echo "=========================================================="
+echo "Job Complete"
+echo "=========================================================="
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1492.00 sec.
+    Max Memory :                                 14790 MB
+    Average Memory :                             10208.33 MB
+    Total Requested Memory :                     196608.00 MB
+    Delta Memory :                               181818.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                22
+    Run time :                                   1548 sec.
+    Turnaround time :                            1433 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/index_err_27415720.txt> for stderr output of this job.
+

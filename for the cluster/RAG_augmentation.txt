@@ -1,0 +1,89 @@
+==========================================================
+Starting RAG Augmentation
+==========================================================
+Loading RAG resources...
+Reading Index from data/address.index...
+Loading Survey Data: data/full_200k_dataset_with_prompts.csv
+Encoding addresses...
+Moving Index to GPU (A100)...
+Searching Start Addresses...
+   > Processing 234531 queries in micro-batches of 64...
+Job Complete
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27439740: <rag_augment> in cluster <dcc> Done
+
+Job <rag_augment> was submitted from host <n-62-30-5> by user <s232692> in cluster <dcc> at Wed Dec 17 09:52:48 2025
+Job was executed on host(s) <4*n-62-12-20>, in queue <gpua100>, as user <s232692> in cluster <dcc> at Wed Dec 17 10:09:25 2025
+</zhome/ee/5/202790> was used as the home directory.
+</zhome/ee/5/202790/Thesis> was used as the working directory.
+Started at Wed Dec 17 10:09:25 2025
+Terminated at Wed Dec 17 10:13:08 2025
+Results reported at Wed Dec 17 10:13:08 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+### Queue Name
+#BSUB -q gpua100
+### Job Name
+#BSUB -J rag_augment
+
+### Logs
+#BSUB -o logs/aug_out_%J.txt
+#BSUB -e logs/aug_err_%J.txt
+
+### Walltime 
+#BSUB -W 08:00
+
+### Resources
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=40GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+
+echo "=========================================================="
+echo "Starting RAG Augmentation"
+echo "=========================================================="
+
+# 1. Load Modules
+module purge
+module load python3/3.10.13
+module load cuda/12.1.1
+module load cudnn/v8.9.7.29-prod-cuda-12.X
+
+# 2. Activate Environment
+source venv/bin/activate
+
+# 3. Run Script
+python3 -u scripts/augment_with_rag.py
+
+echo "Job Complete"
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   72.23 sec.
+    Max Memory :                                 6395 MB
+    Average Memory :                             4290.00 MB
+    Total Requested Memory :                     163840.00 MB
+    Delta Memory :                               157445.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                8
+    Run time :                                   223 sec.
+    Turnaround time :                            1220 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/aug_err_27439740.txt> for stderr output of this job.
+

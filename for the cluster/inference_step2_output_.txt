@@ -1,0 +1,143 @@
+==========================================================
+Starting Inference Only Job
+Node: n-62-18-10
+==========================================================
+Name: vllm
+Version: 0.12.0
+Summary: A high-throughput and memory-efficient inference and serving engine for LLMs
+Home-page: 
+Author: vLLM Team
+Author-email: 
+License: 
+Location: /zhome/ee/5/202790/Thesis/venv/lib/python3.10/site-packages
+Requires: aiohttp, anthropic, blake3, cachetools, cbor2, cloudpickle, compressed-tensors, depyf, diskcache, einops, fastapi, filelock, flashinfer-python, gguf, lark, llguidance, lm-format-enforcer, mistral_common, model-hosting-container-standards, msgspec, ninja, numba, numpy, openai, openai-harmony, opencv-python-headless, outlines_core, partial-json-parser, pillow, prometheus-fastapi-instrumentator, prometheus_client, protobuf, psutil, py-cpuinfo, pybase64, pydantic, python-json-logger, pyyaml, pyzmq, ray, regex, requests, scipy, sentencepiece, setproctitle, tiktoken, tokenizers, torch, torchaudio, torchvision, tqdm, transformers, typing_extensions, watchfiles, xgrammar
+Required-by: 
+----------------------------------------------------------
+STEP 2: Starting Bulk Inference (Challenge)
+----------------------------------------------------------
+Loading data from data/full_200k_dataset_RAG_READY.csv...
+Loaded 234531 prompts.
+Initializing vLLM engine...
+INFO 12-17 18:56:17 [utils.py:253] non-default args: {'seed': None, 'disable_log_stats': True, 'enable_lora': True, 'max_lora_rank': 32, 'model': 'unsloth/llama-3-8b-instruct-bnb-4bit'}
+WARNING 12-17 18:56:18 [arg_utils.py:1175] `seed=None` is equivalent to `seed=0` in V1 Engine. You will no longer be allowed to pass `None` in v0.13.
+INFO 12-17 18:56:19 [model.py:637] Resolved architecture: LlamaForCausalLM
+INFO 12-17 18:56:19 [model.py:1750] Using max model len 8192
+INFO 12-17 18:56:21 [scheduler.py:228] Chunked prefill is enabled with max_num_batched_tokens=8192.
+WARNING 12-17 18:56:23 [system_utils.py:136] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:37 [core.py:93] Initializing a V1 LLM engine (v0.12.0) with config: model='unsloth/llama-3-8b-instruct-bnb-4bit', speculative_config=None, tokenizer='unsloth/llama-3-8b-instruct-bnb-4bit', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=bitsandbytes, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=bitsandbytes, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01), seed=0, served_model_name=unsloth/llama-3-8b-instruct-bnb-4bit, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'level': None, 'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'splitting_ops': ['vllm::unified_attention', 'vllm::unified_attention_with_output', 'vllm::unified_mla_attention', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::kda_attention', 'vllm::sparse_attn_indexer'], 'compile_mm_encoder': False, 'compile_sizes': [], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'eliminate_noops': True, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>}, 'local_cache_dir': None}
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:40 [parallel_state.py:1200] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.66.18.10:51257 backend=nccl
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:40 [parallel_state.py:1408] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:40 [gpu_model_runner.py:3467] Starting to load model unsloth/llama-3-8b-instruct-bnb-4bit...
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:45 [cuda.py:411] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION']
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:46 [bitsandbytes_loader.py:791] Loading weights with BitsAndBytes quantization. May take a while ...
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:56:47 [weight_utils.py:527] No model.safetensors.index.json found in remote.
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:57:37 [punica_selector.py:20] Using PunicaWrapperGPU.
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:57:37 [gpu_model_runner.py:3549] Model loading took 5.7884 GiB memory and 56.324666 seconds
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:57:54 [backends.py:655] Using cache directory: /zhome/ee/5/202790/.cache/vllm/torch_compile_cache/133993ab35/rank_0_0/backbone for vLLM's torch.compile
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:57:54 [backends.py:715] Dynamo bytecode transform time: 16.05 s
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:57:59 [backends.py:216] Directly load the compiled graph(s) for dynamic shape from the cache, took 4.410 s
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:58:02 [monitor.py:34] torch.compile takes 20.46 s in total
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:58:04 [gpu_worker.py:359] Available KV cache memory: 64.26 GiB
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:58:04 [kv_cache_utils.py:1286] GPU KV cache size: 526,432 tokens
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:58:04 [kv_cache_utils.py:1291] Maximum concurrency for 8,192 tokens per request: 64.26x
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m WARNING 12-17 18:58:05 [utils.py:250] Using default LoRA kernel configs
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:58:31 [gpu_model_runner.py:4466] Graph capturing finished in 27 secs, took 1.94 GiB
+[0;36m(EngineCore_DP0 pid=1991513)[0;0m INFO 12-17 18:58:31 [core.py:254] init engine (profile, create kv cache, warmup model) took 53.61 seconds
+INFO 12-17 18:58:33 [llm.py:343] Supported tasks: ['generate']
+Running batch inference...
+WARNING 12-17 18:58:33 [input_processor.py:243] vLLM has deprecated support for supporting different tokenizers for different LoRAs. By default, vLLM uses base model's tokenizer. If you are using a LoRA with its own tokenizer, consider specifying `--tokenizer [lora_path]` to use the LoRA tokenizer.
+Parsing results...
+Saving results to final_thesis_results.csv...
+Inference Complete!
+==========================================================
+Job Complete
+==========================================================
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27446433: <thesis_inference> in cluster <dcc> Done
+
+Job <thesis_inference> was submitted from host <n-62-30-3> by user <s232692> in cluster <dcc> at Wed Dec 17 18:46:31 2025
+Job was executed on host(s) <4*n-62-18-10>, in queue <gpua100>, as user <s232692> in cluster <dcc> at Wed Dec 17 18:55:14 2025
+</zhome/ee/5/202790> was used as the home directory.
+</zhome/ee/5/202790/Thesis> was used as the working directory.
+Started at Wed Dec 17 18:55:14 2025
+Terminated at Wed Dec 17 19:51:28 2025
+Results reported at Wed Dec 17 19:51:28 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+### Queue Name
+#BSUB -q gpua100
+
+### Job Name
+#BSUB -J thesis_inference
+
+### Output and Error Logs
+#BSUB -o logs/inf_output_%J.txt
+#BSUB -e logs/inf_error_%J.txt
+
+### Walltime
+#BSUB -W 04:00
+
+### Resources
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=40GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+
+echo "=========================================================="
+echo "Starting Inference Only Job"
+echo "Node: $(hostname)"
+echo "=========================================================="
+
+# 1. Load Modules
+module purge
+module load python3/3.10.13
+module load cuda/12.1.1
+module load cudnn/v8.9.7.29-prod-cuda-12.X
+
+# 2. Activate Environment
+source venv/bin/activate
+
+# 3. VERIFY VLLM (Sanity Check)
+# This prints the version so we know it's actually there this time
+pip show vllm
+
+# 4. RUN INFERENCE ONLY
+echo "----------------------------------------------------------"
+echo "STEP 2: Starting Bulk Inference (Challenge)"
+echo "----------------------------------------------------------"
+python3 -u scripts/inference.py
+
+echo "=========================================================="
+echo "Job Complete"
+echo "=========================================================="
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3514.00 sec.
+    Max Memory :                                 7996 MB
+    Average Memory :                             7236.19 MB
+    Total Requested Memory :                     163840.00 MB
+    Delta Memory :                               155844.00 MB
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                69
+    Run time :                                   3376 sec.
+    Turnaround time :                            3897 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/inf_error_27446433.txt> for stderr output of this job.
+

@@ -1,0 +1,187 @@
+==========================================================
+Starting Thesis Job on DTU HPC (LSF Scheduler)
+Node: n-62-13-14
+Date: Mon Dec  8 23:40:52 CET 2025
+==========================================================
+GPU Allocated:
+Mon Dec  8 23:40:52 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    On  |   00000000:A1:00.0 Off |                    0 |
+| N/A   51C    P0             69W /  350W |       0MiB /  46068MiB |      0%   E. Process |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+----------------------------------------------------------
+STEP 1: Starting Fine-Tuning (Train)
+----------------------------------------------------------
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+Unsloth: Could not find Config class in trl.trainer.dpo_trainer. Found: []
+Unsloth: Could not find Config class in trl.trainer.iterative_sft_trainer. Found: []
+Unsloth: Could not find Config class in trl.trainer.sft_trainer. Found: []
+Loading Llama-3-8B model...
+==((====))==  Unsloth 2025.12.1: Fast Llama patching. Transformers: 4.57.3.
+   \\   /|    NVIDIA L40S. Num GPUs = 1. Max memory: 44.392 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.9.1+cu128. CUDA: 8.9. CUDA Toolkit: 12.8. Triton: 3.5.1
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.33.post2. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+Loading data from data/train_challenger.jsonl...
+Starting training...
+Unsloth: Will smartly offload gradients to save VRAM!
+{'loss': 2.8125, 'grad_norm': 1.2263879776000977, 'learning_rate': 0.00018, 'epoch': 0.01}
+{'loss': 0.8506, 'grad_norm': 0.4420778751373291, 'learning_rate': 0.0001953846153846154, 'epoch': 0.02}
+{'loss': 0.5931, 'grad_norm': 0.26385554671287537, 'learning_rate': 0.00019025641025641025, 'epoch': 0.03}
+{'loss': 0.5189, 'grad_norm': 0.2774611711502075, 'learning_rate': 0.00018512820512820515, 'epoch': 0.04}
+{'loss': 0.5345, 'grad_norm': 0.24274292588233948, 'learning_rate': 0.00018, 'epoch': 0.05}
+{'loss': 0.5075, 'grad_norm': 0.2092868536710739, 'learning_rate': 0.00017487179487179488, 'epoch': 0.06}
+{'loss': 0.4979, 'grad_norm': 0.2085343599319458, 'learning_rate': 0.00016974358974358974, 'epoch': 0.07}
+{'loss': 0.4912, 'grad_norm': 0.23171868920326233, 'learning_rate': 0.0001646153846153846, 'epoch': 0.08}
+{'loss': 0.4875, 'grad_norm': 0.234559565782547, 'learning_rate': 0.0001594871794871795, 'epoch': 0.1}
+{'loss': 0.4863, 'grad_norm': 0.25221681594848633, 'learning_rate': 0.00015435897435897436, 'epoch': 0.11}
+{'loss': 0.4502, 'grad_norm': 0.181983083486557, 'learning_rate': 0.00014923076923076923, 'epoch': 0.12}
+{'loss': 0.4812, 'grad_norm': 0.22317221760749817, 'learning_rate': 0.0001441025641025641, 'epoch': 0.13}
+{'loss': 0.4565, 'grad_norm': 0.20103952288627625, 'learning_rate': 0.000138974358974359, 'epoch': 0.14}
+{'loss': 0.4446, 'grad_norm': 0.19741462171077728, 'learning_rate': 0.00013384615384615385, 'epoch': 0.15}
+{'loss': 0.4615, 'grad_norm': 0.2173619270324707, 'learning_rate': 0.00012871794871794875, 'epoch': 0.16}
+{'loss': 0.4708, 'grad_norm': 0.21503357589244843, 'learning_rate': 0.0001235897435897436, 'epoch': 0.17}
+{'loss': 0.4362, 'grad_norm': 0.2235887497663498, 'learning_rate': 0.00011846153846153846, 'epoch': 0.18}
+{'loss': 0.4549, 'grad_norm': 0.2202885001897812, 'learning_rate': 0.00011333333333333334, 'epoch': 0.19}
+{'loss': 0.4516, 'grad_norm': 0.20479713380336761, 'learning_rate': 0.0001082051282051282, 'epoch': 0.2}
+{'loss': 0.4414, 'grad_norm': 0.22508372366428375, 'learning_rate': 0.00010307692307692307, 'epoch': 0.21}
+{'loss': 0.4405, 'grad_norm': 0.23669220507144928, 'learning_rate': 9.794871794871795e-05, 'epoch': 0.22}
+{'loss': 0.4245, 'grad_norm': 0.19302135705947876, 'learning_rate': 9.282051282051283e-05, 'epoch': 0.23}
+{'loss': 0.4403, 'grad_norm': 0.20293985307216644, 'learning_rate': 8.76923076923077e-05, 'epoch': 0.24}
+{'loss': 0.441, 'grad_norm': 0.18525022268295288, 'learning_rate': 8.256410256410256e-05, 'epoch': 0.25}
+{'loss': 0.4405, 'grad_norm': 0.21510016918182373, 'learning_rate': 7.743589743589744e-05, 'epoch': 0.27}
+{'loss': 0.4487, 'grad_norm': 0.23531560599803925, 'learning_rate': 7.23076923076923e-05, 'epoch': 0.28}
+{'loss': 0.4256, 'grad_norm': 0.26551875472068787, 'learning_rate': 6.717948717948718e-05, 'epoch': 0.29}
+{'loss': 0.4066, 'grad_norm': 0.1928497850894928, 'learning_rate': 6.205128205128206e-05, 'epoch': 0.3}
+{'loss': 0.433, 'grad_norm': 0.20005546510219574, 'learning_rate': 5.692307692307692e-05, 'epoch': 0.31}
+{'loss': 0.4113, 'grad_norm': 0.23829014599323273, 'learning_rate': 5.17948717948718e-05, 'epoch': 0.32}
+{'loss': 0.4144, 'grad_norm': 0.21587876975536346, 'learning_rate': 4.666666666666667e-05, 'epoch': 0.33}
+{'loss': 0.4236, 'grad_norm': 0.22830873727798462, 'learning_rate': 4.1538461538461544e-05, 'epoch': 0.34}
+{'loss': 0.42, 'grad_norm': 0.19845403730869293, 'learning_rate': 3.641025641025641e-05, 'epoch': 0.35}
+{'loss': 0.4289, 'grad_norm': 0.21917442977428436, 'learning_rate': 3.128205128205128e-05, 'epoch': 0.36}
+{'loss': 0.4409, 'grad_norm': 0.21672049164772034, 'learning_rate': 2.6153846153846157e-05, 'epoch': 0.37}
+{'loss': 0.4388, 'grad_norm': 0.25083059072494507, 'learning_rate': 2.102564102564103e-05, 'epoch': 0.38}
+{'loss': 0.4178, 'grad_norm': 0.2593922019004822, 'learning_rate': 1.5897435897435897e-05, 'epoch': 0.39}
+{'loss': 0.4153, 'grad_norm': 0.20291200280189514, 'learning_rate': 1.0769230769230771e-05, 'epoch': 0.4}
+{'loss': 0.4221, 'grad_norm': 0.19846497476100922, 'learning_rate': 5.641025641025641e-06, 'epoch': 0.41}
+{'loss': 0.4307, 'grad_norm': 0.243031308054924, 'learning_rate': 5.128205128205128e-07, 'epoch': 0.42}
+{'train_runtime': 631.6745, 'train_samples_per_second': 10.132, 'train_steps_per_second': 0.633, 'train_loss': 0.5223349761962891, 'epoch': 0.42}
+Saving LoRA adapters to lora_challenger_model...
+Training Complete!
+----------------------------------------------------------
+STEP 2: Starting Bulk Inference (Challenge)
+----------------------------------------------------------
+==========================================================
+Job Complete
+==========================================================
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27336167: <thesis_llm> in cluster <dcc> Done
+
+Job <thesis_llm> was submitted from host <n-62-30-5> by user <s232692> in cluster <dcc> at Mon Dec  8 22:40:22 2025
+Job was executed on host(s) <4*n-62-13-14>, in queue <gpul40s>, as user <s232692> in cluster <dcc> at Mon Dec  8 23:40:50 2025
+</zhome/ee/5/202790> was used as the home directory.
+</zhome/ee/5/202790/Thesis> was used as the working directory.
+Started at Mon Dec  8 23:40:50 2025
+Terminated at Mon Dec  8 23:52:47 2025
+Results reported at Mon Dec  8 23:52:47 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+### Queue Name (Restricted/Locked to gpul40s as requested)
+#BSUB -q gpul40s
+
+### Job Name
+#BSUB -J thesis_llm
+
+### Output and Error Logs (%J is the Job ID)
+#BSUB -o logs/output_%J.txt
+#BSUB -e logs/error_%J.txt
+
+### Walltime (4 hours)
+#BSUB -W 04:00
+
+### Resources
+#BSUB -n 4                       # Request 4 CPU cores
+#BSUB -R "span[hosts=1]"         # Keep all cores on the same node
+#BSUB -R "rusage[mem=48GB]"      # Request 48GB System RAM
+#BSUB -gpu "num=1:mode=exclusive_process"  # Request 1 GPU in exclusive mode
+
+echo "=========================================================="
+echo "Starting Thesis Job on DTU HPC (LSF Scheduler)"
+echo "Node: $(hostname)"
+echo "Date: $(date)"
+echo "=========================================================="
+
+# 1. Load Modules
+# DTU LSF specific modules
+module purge
+module load python3/3.10.13
+module load cuda/12.1.1
+module load cudnn/v8.9.7.29-prod-cuda-12.X
+
+# 2. Activate Environment
+source venv/bin/activate
+
+# Check GPU
+echo "GPU Allocated:"
+nvidia-smi
+
+# 3. RUN TRAINING
+echo "----------------------------------------------------------"
+echo "STEP 1: Starting Fine-Tuning (Train)"
+echo "----------------------------------------------------------"
+# -u forces unbuffered output so you see logs in real-time
+python3 -u scripts/train.py
+
+# 4. RUN INFERENCE
+# Only run if training succeeds (Exit code 0)
+if [ $? -eq 0 ]; then
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   723.00 sec.
+    Max Memory :                                 2388 MB
+    Average Memory :                             2138.50 MB
+    Total Requested Memory :                     196608.00 MB
+    Delta Memory :                               194220.00 MB
+    Max Swap :                                   -
+    Max Processes :                              9
+    Max Threads :                                36
+    Run time :                                   717 sec.
+    Turnaround time :                            4345 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/error_27336167.txt> for stderr output of this job.
+

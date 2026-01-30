@@ -72,14 +72,14 @@ This phase requires high-performance compute resources and follows a multi-step 
 
 * Augmentation: augment_with_rag.py combines user prompts with retrieved context to create full_200k_dataset_RAG_READY.csv.
 
-* Inference: inference.py runs the fine-tuned model to produce RAG_final_thesis_results.csv.
-
-### 4. Final Validation & Psychophysical Analysis
-Once the cluster outputs are retrieved, final routing is performed locally, and both methods are compared against the baseline.
+* Inference: inference.py runs the fine-tuned model to produce RAG_final_thesis_results.csv
 
 * RAG_OSRM.ipynb: Performs OSRM distance/time recalculations on the RAG results.
 
 * Output: Data/RAG_corrected_df.csv.
+
+### 4. Final Validation & Psychophysical Analysis
+Once the cluster outputs are retrieved, final routing is performed locally, and both methods are compared against the baseline.
 
 * confidence_analysis_vs_baseline.ipynb: The final analysis hub. Compares DET and RAG outputs against the original data to generate:
 

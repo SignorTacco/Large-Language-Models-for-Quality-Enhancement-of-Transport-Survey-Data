@@ -1,0 +1,39 @@
+ACTION 0
+# Create main directory and enter it
+New-Item -ItemType Directory -Force -Path "C:\Users\nicoc\osrm_data"
+cd "C:\Users\nicoc\osrm_data"
+
+# Create sub-directories for each mode
+New-Item -ItemType Directory -Force -Path "car"
+New-Item -ItemType Directory -Force -Path "bike"
+New-Item -ItemType Directory -Force -Path "foot"
+
+ACTION 1
+Download the denmark-latest.osm.pbf file from Geofabrik Denmark (https://download.geofabrik.de/europe/denmark.html)
+
+ACTION 2
+
+# 1. Process Car Data
+docker run -t -v "${PWD}\car:/data" osrm/osrm-backend osrm-extract -p /opt/car.lua /data/denmark-latest.osm.pbf
+docker run -t -v "${PWD}\car:/data" osrm/osrm-backend osrm-contract /data/denmark-latest.osrm
+
+# 2. Start Car Server
+docker run -d -p 5000:5000 -v "${PWD}\car:/data" osrm/osrm-backend osrm-routed --algorithm ch /data/denmark-latest.osrm
+
+ACTION 3
+
+# 1. Process Bike Data
+docker run -t -v "${PWD}\bike:/data" osrm/osrm-backend osrm-extract -p /opt/bicycle.lua /data/denmark-latest.osm.pbf
+docker run -t -v "${PWD}\bike:/data" osrm/osrm-backend osrm-contract /data/denmark-latest.osrm
+
+# 2. Start Bike Server
+docker run -d -p 5001:5000 -v "${PWD}\bike:/data" osrm/osrm-backend osrm-routed --algorithm ch /data/denmark-latest.osrm
+
+ACTION 4
+
+# 1. Process Walk Data
+docker run -t -v "${PWD}\foot:/data" osrm/osrm-backend osrm-extract -p /opt/foot.lua /data/denmark-latest.osm.pbf
+docker run -t -v "${PWD}\foot:/data" osrm/osrm-backend osrm-contract /data/denmark-latest.osrm
+
+# 2. Start Walk Server
+docker run -d -p 5002:5000 -v "${PWD}\foot:/data" osrm/osrm-backend osrm-routed --algorithm ch /data/denmark-latest.osrm

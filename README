@@ -1,0 +1,13 @@
+Addresses/
+│
+├─ fetch_all_denmark_csv.py
+├─ build_index.py
+├─ retriever_all_dk.py
+├─ adresser_all_denmark.csv   <-- fetched raw data
+│
+└─ addr_index/                <-- index artifacts
+     ├── rows.parquet
+     ├── unique_streets.pkl
+     ├── street_to_rows.pkl
+     ├── street_house_to_rows.pkl
+

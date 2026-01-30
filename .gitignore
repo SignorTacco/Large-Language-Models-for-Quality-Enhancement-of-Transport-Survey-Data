@@ -1,0 +1,23 @@
+# Data files (Don't upload respondent data!)
+*.csv
+*.jsonl
+*.pkl
+*.parquet
+Data/
+Addresses/adresser_all_denmark.csv
+
+# Model weights and indexes
+lora_challenger_model/
+addr_index/
+*.index
+*.bin
+*.pt
+
+# Python environment
+__pycache__/
+.ipynb_checkpoints/
+.env
+venv/
+
+# System files
+.DS_Store

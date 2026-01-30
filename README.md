@@ -37,51 +37,51 @@ Both experiments were designed to meet the strict **GDPR requirements** of the D
 ## 🛠️ Implementation Workflow & File Structure
 The project follows a "Golden Cascade" logic: preprocessing the raw survey data, executing a high-volume Deterministic experiment locally, and running a high-reasoning Semantic (RAG) experiment on the DTU HPC Cluster.
 
-1. Infrastructure & Reference Data
+### 1. Infrastructure & Reference Data
 Before running the pipelines, the environment and the Danish address baseline must be established.
 
-Addresses/fetch_all_denmark_csv.py: Downloads the official Danish address registry (DAWA).
+* Addresses/fetch_all_denmark_csv.py: Downloads the official Danish address registry (DAWA).
 
-Addresses/build_index.py: Processes raw addresses into searchable artifacts (stored in addr_index/).
+* Addresses/build_index.py: Processes raw addresses into searchable artifacts (stored in addr_index/).
 
-Setting_up_docker_osm.txt: Technical instructions for hosting the local OSRM (Open Source Routing Machine) instance via Docker.
+* Setting_up_docker_osm.txt: Technical instructions for hosting the local OSRM (Open Source Routing Machine) instance via Docker.
 
-2. Preprocessing: The "Efterkod" Alignment
+### 2. Preprocessing: The "Efterkod" Alignment
 This phase aligns the raw survey data with the official ground truth (Efterkod) to identify the errors that need fixing.
 
-Individual Playbooks: Process raw session, trip, and stage data into TuSession_Edited_Nicola.csv, EfterkodTur_Edited_Nicola.csv, and EfterkodDelure_Edited_Nicola.csv.
+* Individual Playbooks: Process raw session, trip, and stage data into TuSession_Edited_Nicola.csv, EfterkodTur_Edited_Nicola.csv, and EfterkodDelure_Edited_Nicola.csv.
 
-Merge_Efterkod_DFs.ipynb: Merges these into the master dataset: Data/FastCheckTUData.csv.
+* Merge_Efterkod_DFs.ipynb: Merges these into the master dataset: Data/FastCheckTUData.csv.
 
-prep_fine_tuning.ipynb: Converts the master data into LLM-ready formats: full_200k_dataset_with_prompts.csv and train_challenger.jsonl.
+* prep_fine_tuning.ipynb: Converts the master data into LLM-ready formats: full_200k_dataset_with_prompts.csv and train_challenger.jsonl.
 
-3. The Experimental Pipelines
+### 3. The Experimental Pipelines
 Approach A: Deterministic (Local)
 Script: DET_OSRM.ipynb
 
-Process: Runs Levenshtein string-matching logic against the DAWA registry and performs local OSRM routing.
+* Process: Runs Levenshtein string-matching logic against the DAWA registry and performs local OSRM routing.
 
-Output: DET_final_corrected_df.csv
+* Output: DET_final_corrected_df.csv
 
 Approach B: Semantic / RAG (DTU HPC Cluster)
 This phase requires high-performance compute resources and follows a multi-step sequence:
 
-Training: train.py uses train_challenger.jsonl to create the fine-tuned lora_challenger_model.
+* Training: train.py uses train_challenger.jsonl to create the fine-tuned lora_challenger_model.
 
-Indexing: build_rag_index.py creates the FAISS vector store (address.index) from adresser_all_denmark.csv.
+* Indexing: build_rag_index.py creates the FAISS vector store (address.index) from adresser_all_denmark.csv.
 
-Augmentation: augment_with_rag.py combines user prompts with retrieved context to create full_200k_dataset_RAG_READY.csv.
+* Augmentation: augment_with_rag.py combines user prompts with retrieved context to create full_200k_dataset_RAG_READY.csv.
 
-Inference: inference.py runs the fine-tuned model to produce RAG_final_thesis_results.csv.
+* Inference: inference.py runs the fine-tuned model to produce RAG_final_thesis_results.csv.
 
-4. Final Validation & Psychophysical Analysis
+### 4. Final Validation & Psychophysical Analysis
 Once the cluster outputs are retrieved, final routing is performed locally, and both methods are compared against the baseline.
 
-RAG_OSRM.ipynb: Performs OSRM distance/time recalculations on the RAG results.
+* RAG_OSRM.ipynb: Performs OSRM distance/time recalculations on the RAG results.
 
-Output: Data/RAG_corrected_df.csv.
+* Output: Data/RAG_corrected_df.csv.
 
-confidence_analysis_vs_baseline.ipynb: The final analysis hub. Compares DET and RAG outputs against the original data to generate:
+* confidence_analysis_vs_baseline.ipynb: The final analysis hub. Compares DET and RAG outputs against the original data to generate:
 
 The Unified Bias Matrix (Distance/Time error).
 

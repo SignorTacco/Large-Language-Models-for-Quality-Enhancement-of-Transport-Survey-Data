@@ -90,4 +90,5 @@ Taxonomy of Failure morphology.
 Performance Visualizations (Venn diagrams and confidence distributions).
 
 ---
-*This research serves as a proof-of-concept for the "Golden Cascade" architecture—proposing that future survey systems should use deterministic filters for volume and semantic models for the complex residual tail.*
+## ⚠️ Note on Data Privacy
+The datasets used in this project (`TU Raw Data` and `Efterkod`) are the property of the Danish National Travel Survey and contain sensitive mobility information. Consequently, the `Data/` and `Addresses/` CSV files are excluded from this repository to comply with GDPR and DTU data privacy policies. Users wishing to replicate the study must provide their own authorized access to these data sources.
